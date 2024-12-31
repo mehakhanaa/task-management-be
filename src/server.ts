@@ -11,6 +11,7 @@ const app: Application = express();
 
 app.use(cors());
 app.use(express.json());
+
 app.use('/api/auth', authRoutes);
 app.use('/api/tasks', taskRoutes);
 
@@ -18,7 +19,9 @@ const PORT = process.env.PORT || 5500;
 
 const startServer = async () => {
   try {
+
     await connectDatabase();
+  
     app.listen(PORT, () => {
       console.log(`Server is running on http://localhost:${PORT}`);
     });
